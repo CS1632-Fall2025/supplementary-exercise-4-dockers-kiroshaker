@@ -103,7 +103,7 @@ public class D3Test {
 
         WebElement element = driver.findElement(By.cssSelector("li:nth-child(3) > img"));
         vars.put("imgSrc", element.getAttribute("src"));
-        assertEquals("https://cs1632.appspot.com/images/cat2.jpg", vars.get("imgSrc").toString());
+        assertEquals("http://localhost:8080/images/cat2.jpg", vars.get("imgSrc").toString());
     }
 
     @Test
