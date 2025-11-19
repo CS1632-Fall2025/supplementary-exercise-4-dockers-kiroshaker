@@ -14,7 +14,6 @@ import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.Dimension;
@@ -40,6 +39,10 @@ public class D3Test {
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--remote-allow-origins=*");
+        options.addArguments("--disable-features=SameSiteByDefaultCookies");
+        options.addArguments("--disable-features=CookiesWithoutSameSiteMustBeSecure");
+        options.addArguments("--disable-features=BlockInsecurePrivateNetworkRequests");
+        options.addArguments("--disable-site-isolation-trials");
 
         driver = new ChromeDriver(options);
         js = (JavascriptExecutor) driver;
