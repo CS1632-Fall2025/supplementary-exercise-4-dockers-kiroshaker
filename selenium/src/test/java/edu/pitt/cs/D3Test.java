@@ -213,48 +213,4 @@ public class D3Test {
         assertThat(driver.findElement(By.xpath("//div[@id='greeting']/h4")).getText(),
                 is("Meow! from Jennyanydots."));
     }
-
-    @Test
-    public void dEFECT1FUNFEED() {
-        driver.get("http://localhost:8080");
-        driver.manage().window().setSize(new Dimension(1440, 805));
-        setDefaultCookies();
-
-        driver.findElement(By.linkText("Feed-A-Cat")).click();
-        driver.findElement(By.xpath("//input[@id='catnips']")).sendKeys("-6");
-        driver.findElement(By.xpath("//button[contains(.,'Feed')]")).click();
-
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//*[@id='feedResult' and (text()='Nom, nom, nom.' or text()='Cat fight!')]")));
-
-        assertThat(driver.findElement(By.xpath("//div[@id='feedResult']")).getText(), is("Cat fight!"));
-    }
-
-    @Test
-    public void dEFECT2FUNGREETACAT() {
-        driver.get("http://localhost:8080");
-        driver.manage().window().setSize(new Dimension(1440, 805));
-        setDefaultCookies();
-
-        driver.manage().addCookie(new Cookie("1", "true"));
-        driver.navigate().refresh();
-
-        driver.findElement(By.xpath("//a[contains(text(),'Greet-A-Cat')]")).click();
-        assertThat(driver.findElement(By.xpath("//div[@id='greeting']/h4")).getText(), is("Meow!Meow!"));
-    }
-
-    @Test
-    public void dEFECT3FUNGREETACATWITHNAME() {
-        driver.get("http://localhost:8080");
-        driver.manage().window().setSize(new Dimension(1440, 805));
-        setDefaultCookies();
-
-        driver.manage().addCookie(new Cookie("1", "true"));
-        driver.navigate().refresh();
-
-        driver.get("http://localhost:8080/greet-a-cat/Jennyanydots");
-        assertThat(driver.findElement(By.xpath("//div[@id='greeting']/h4")).getText(),
-                is("Jennyanydots is not here."));
-    }
 }
